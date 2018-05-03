@@ -1,14 +1,25 @@
 
-# C++网络编程模型
-=================
+# C++网络编程库libolptnet
+=========================
 
-一、Reactor Network Communication
----------------------
- 学习C++网络编程 reactor框架:
- (1) select I/O model
- (2) epoll I/O model
- (3) poll I/O model
- (4) one loop per thread (参考 chenshuo的muduo库思想)
+一、简介
+  实现了一套基于epoll/poll/select模型I/O复用的多线程网络编程框架，多线程部分参考
+了chenshuo的muduo库one loop per thread 的设计思想。
 
-二、依赖
- 用到了boost库function和bind
+二、功能
+ 1、epoll/poll/select模型I/O复用的Reactor框架；
+ 2、基于std::stringstream实现的缓存Buffer;
+ 3、one loop per thread 的多线程I/O复用框架；
+ 4、基于timerfd/epoll等实现的定时器；
+
+三、依赖
+  只有在编译时用到了boost库function和bind的头文件，不许链接boost库；
+
+四、编译
+  cd libolptnet/
+  make all
+  即可在bin/目录先生成libolptnet.a静态库，其中在src/example中有example-1至example-4个
+使用示例。可运行测试。 
+
+五、联系
+  E-mail:inrgihc@126.com

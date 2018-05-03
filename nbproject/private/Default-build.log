@@ -1,0 +1,20 @@
+if [ ! -d ./bin ]; then mkdir ./bin ; fi;
+g++ -g -Wall -I./include -I./src  -c -o src/net/tcp_socket_addr.o src/net/tcp_socket_addr.cc
+g++ -g -Wall -I./include -I./src  -c -o src/net/async_acceptor.o src/net/async_acceptor.cc
+g++ -g -Wall -I./include -I./src  -c -o src/net/connection_handler.o src/net/connection_handler.cc
+g++ -g -Wall -I./include -I./src  -c -o src/net/stream_buffer.o src/net/stream_buffer.cc
+g++ -g -Wall -I./include -I./src  -c -o src/net/event_dispatcher.o src/net/event_dispatcher.cc
+g++ -g -Wall -I./include -I./src  -c -o src/net/service_loop.o src/net/service_loop.cc
+g++ -g -Wall -I./include -I./src  -c -o src/net/service_loop_thread.o src/net/service_loop_thread.cc
+g++ -g -Wall -I./include -I./src  -c -o src/net/thpool_service_loop.o src/net/thpool_service_loop.cc
+g++ -g -Wall -I./include -I./src  -c -o src/net/net_base.o src/net/net_base.cc
+ar -cr ./bin/libolptnet.a  src/net/tcp_socket_addr.o src/net/async_acceptor.o src/net/connection_handler.o src/net/stream_buffer.o src/net/event_dispatcher.o src/net/service_loop.o src/net/service_loop_thread.o src/net/thpool_service_loop.o src/net/net_base.o
+g++ -g -Wall -I./include -I./src  -c -o src/example/example-1.o src/example/example-1.cc
+g++ -g -Wall -I./include -I./src -o ./bin/server_1  src/example/example-1.o -L./bin -lolptnet -L./lib -lpthread
+g++ -g -Wall -I./include -I./src  -c -o src/example/example-2.o src/example/example-2.cc
+g++ -g -Wall -I./include -I./src  -c -o src/example/acceptor_server.o src/example/acceptor_server.cc
+g++ -g -Wall -I./include -I./src  -c -o src/example/service_handler.o src/example/service_handler.cc
+g++ -g -Wall -I./include -I./src -o ./bin/server_2  src/example/example-2.o src/example/acceptor_server.o src/example/service_handler.o -L./bin -lolptnet -L./lib -lpthread
+g++ -g -Wall -I./include -I./src  -c -o src/example/example-3.o src/example/example-3.cc
+g++ -g -Wall -I./include -I./src -o ./bin/server_3  src/example/example-3.o src/example/acceptor_server.o src/example/service_handler.o -L./bin -lolptnet -L./lib -lpthread
+g++ -g -Wall -I./include -I./src -o ./bin/client  src/client/main.cc -L./bin -lolptnet 

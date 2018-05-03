@@ -30,8 +30,8 @@ public:
     virtual int handle_events ( ready_event_t& ready, const int timeout_ms = -1 ) = 0;
 
 private:
-
-    EventDispatcher ( const EventDispatcher & );
+    EventDispatcher ( const EventDispatcher& other );
+    EventDispatcher& operator=(const EventDispatcher& other);
 };
 
 #endif /* EVENT_MODEL_H */

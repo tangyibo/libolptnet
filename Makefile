@@ -16,7 +16,8 @@ LIB_OBJS +=src/net/tcp_socket_addr.o \
 	src/net/service_loop.o  \
 	src/net/service_loop_thread.o \
 	src/net/thpool_service_loop.o \
-	src/net/net_base.o 
+	src/net/net_base.o \
+	src/net/timer_handler.o 
 	
 
 S_OBJS_1=src/example/example-2.o \
@@ -32,9 +33,9 @@ C_OBJS +=src/client/main.o
 
 CXXFLAGS = -g -Wall
 CPPFLAGS = -I./include -I./src
-LIBS =-L./lib -lpthread
+LIBS =-L./lib -lpthread -lrt
 
-all: libs server1 server2 server3 client
+all: libs server1 server2 server3 server4 client
 
 dir:
 	if [ ! -d $(BINDIR) ]; then mkdir $(BINDIR) ; fi;
@@ -52,12 +53,15 @@ server2: $(S_OBJS_1)
 
 server3: $(S_OBJS_2)
 	g++ $(CXXFLAGS) $(CPPFLAGS) -o $(BINDIR)/$(S_EXES)_3  $^ -L$(BINDIR) -l$(LIB_NET) $(LIBS)
+	
+server4:  src/example/example-4.o
+	g++ $(CXXFLAGS) $(CPPFLAGS) -o $(BINDIR)/$(S_EXES)_4  $^ -L$(BINDIR) -l$(LIB_NET) $(LIBS)
 
 client:  
 	g++ $(CXXFLAGS) $(CPPFLAGS) -o $(BINDIR)/$(C_EXES)  src/client/main.cc -L$(BINDIR) -l$(LIB_NET) 
 	
 clean:
-	$(RM) $(LIB_OBJS) $(S_OBJS) $(C_OBJS)
+	$(RM) $(LIB_OBJS) $(S_OBJS_1) $(S_OBJS_2) $(C_OBJS) src/example/*.o
 	$(RM) $(BINDIR)/*
 #
 #
