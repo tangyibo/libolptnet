@@ -7,11 +7,12 @@
 #include <errno.h>  //errno
 #include <iostream>
 
-TimerHandler::TimerHandler(ServiceLoop *loop, const double interval,const bool repeat)
+TimerHandler::TimerHandler(ServiceLoop *loop, const double interval, const bool repeat)
 : timer_fd_(::timerfd_create(CLOCK_MONOTONIC, TFD_NONBLOCK | TFD_CLOEXEC))
 , srv_loop_(loop)
 , interval_(interval)
 , repeat_(repeat)
+, started_(false)
 {
     assert(timer_fd_ >= 0);
 }
@@ -28,35 +29,40 @@ TimerHandler::~TimerHandler()
 int TimerHandler::start()
 {
     struct itimerspec ptime_internal;
-    bzero(&ptime_internal,sizeof(struct itimerspec));
-    ptime_internal.it_value.tv_sec = (int)interval_;
-    ptime_internal.it_value.tv_nsec = (interval_ - (int)interval_)*1000000000;
-    if(repeat_)
+    bzero(&ptime_internal, sizeof (struct itimerspec));
+    ptime_internal.it_value.tv_sec = (int) interval_;
+    ptime_internal.it_value.tv_nsec = (interval_ - (int) interval_)*1000000000;
+    if (repeat_)
     {
-	    ptime_internal.it_interval.tv_sec = ptime_internal.it_value.tv_sec;
-	    ptime_internal.it_interval.tv_nsec = ptime_internal.it_value.tv_nsec;
+        ptime_internal.it_interval.tv_sec = ptime_internal.it_value.tv_sec;
+        ptime_internal.it_interval.tv_nsec = ptime_internal.it_value.tv_nsec;
     }
 
-    assert(0==::timerfd_settime(timer_fd_, 0, &ptime_internal, NULL));
+    assert(0 == ::timerfd_settime(timer_fd_, 0, &ptime_internal, NULL));
 
     int result = srv_loop_->register_event(handle(), true, false, this);
     assert(0 == result);
+    
+    started_=true;
 
     return 0;
 }
 
 void TimerHandler::stop()
 {
-    struct itimerspec new_value;
-    new_value.it_value.tv_sec = 0;
-    new_value.it_value.tv_nsec = 0;
-    new_value.it_interval.tv_sec = 0;
-    new_value.it_interval.tv_nsec = 0;
+    if(!started_)
+        return;
 
-    if(repeat_)
-    { 
-	    ::timerfd_settime(timer_fd_,0,NULL, NULL);
-	    repeat_ = false;
+    if (repeat_)
+    {
+        struct itimerspec new_value;
+        new_value.it_value.tv_sec = 0;
+        new_value.it_value.tv_nsec = 0;
+        new_value.it_interval.tv_sec = 0;
+        new_value.it_interval.tv_nsec = 0;
+
+        ::timerfd_settime(timer_fd_, 0, NULL, NULL);
+        repeat_ = false;
     }
 
     int result = srv_loop_->delete_event(handle());
@@ -71,8 +77,8 @@ void TimerHandler::do_handle_read()
 
     on_timer(howmany);
 
-    if(!repeat_)
+    if (!repeat_)
     {
-	    stop();
+        stop();
     }
 }

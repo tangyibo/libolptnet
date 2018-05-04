@@ -21,17 +21,18 @@ public:
     virtual int handle ( )  {  return timer_fd_; }
     
     virtual void do_handle_read ( );
-    virtual void do_handle_write ( )            {}
-    virtual void do_handle_error ( )            {}
-    virtual void do_handle_timeout ( )       {}
+    virtual void do_handle_write ( ) {}
+    virtual void do_handle_error ( ) {}
+    virtual void do_handle_timeout ( ) {}
     
     virtual void on_timer(uint64_t expire)=0;
-    
+
 private:
     int timer_fd_;
     ServiceLoop *srv_loop_;
     volatile double interval_;
     volatile bool repeat_;
+    volatile bool started_;
 };
 
 #endif /* TIMER_HANDLER_H */
