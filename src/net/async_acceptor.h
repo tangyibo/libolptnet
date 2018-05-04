@@ -20,7 +20,7 @@ public:
     virtual void do_handle_write ( );
     virtual void do_handle_error ( );
     
-    virtual bool on_accept(SocketAddress addr);
+    virtual bool on_accept(const SocketAddress &addr);
 
 protected:
     int listen_fd_;

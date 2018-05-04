@@ -25,7 +25,6 @@
           <in>tcp_socket_addr.cc</in>
           <in>thpool_service_loop.cc</in>
           <in>timer_handler.cc</in>
-          <in>timer_handler.h</in>
         </df>
       </df>
     </df>
@@ -59,7 +58,6 @@
           <executablePath></executablePath>
           <ccTool>
             <incDir>
-              <pElem>include</pElem>
               <pElem>src</pElem>
               <pElem>.</pElem>
             </incDir>
@@ -103,8 +101,6 @@
       <item path="src/net/thpool_service_loop.cc" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/net/timer_handler.cc" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/net/timer_handler.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

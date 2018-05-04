@@ -1,7 +1,6 @@
 #include "net/tcp_socket_addr.h"
 #include "net/service_loop.h"
 #include "acceptor_server.h"
-#include "service_handler.h"
 #include "base/posix_thread.h"
 
 SocketAddress endpoint("127.0.0.1", 6543);

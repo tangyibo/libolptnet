@@ -20,7 +20,7 @@ void acceptor_server::stop_thread_pool()
     thpool_.close();
 }
 
-bool acceptor_server::on_accept(SocketAddress addr)
+bool acceptor_server::on_accept(const SocketAddress addr)
 {
     if (clients_.size() >= MAX_CLIENT_COUNT)
         return false;

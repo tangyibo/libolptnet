@@ -78,7 +78,7 @@ void AsyncAcceptor::do_handle_error()
     //nothing
 }
 
-bool AsyncAcceptor::on_accept(SocketAddress addr)
+bool AsyncAcceptor::on_accept(const SocketAddress &addr)
 {
 //    ConnectionHandler *ptr = new ConnectionHandler();
 //

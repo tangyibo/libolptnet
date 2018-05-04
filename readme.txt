@@ -9,7 +9,7 @@
 二、功能
  1、epoll/poll/select模型I/O复用的Reactor框架；
  2、基于std::stringstream实现的缓存Buffer;
- 3、one loop per thread 的多线程I/O复用框架；
+ 3、one loop per thread 的多线程I/O复用框架,但不使用boost和c++11；
  4、基于timerfd/epoll等实现的定时器；
 
 三、依赖

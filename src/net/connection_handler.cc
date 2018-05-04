@@ -22,7 +22,7 @@ void ConnectionHandler::set_service_loop(ServiceLoop *loop)
     srv_loop_=loop;
 }
 
-void ConnectionHandler::open( SocketAddress remote)
+void ConnectionHandler::open(SocketAddress remote)
 {
     set_remote_addr(remote);
     

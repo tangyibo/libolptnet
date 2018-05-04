@@ -6,6 +6,7 @@
       </df>
       <df name="src">
         <df name="base">
+          <in>functor.h</in>
           <in>mutex_lock.h</in>
           <in>posix_thread.h</in>
           <in>thread_queue.h</in>
