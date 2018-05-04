@@ -14,7 +14,7 @@ public:
     void set_service_loop(ServiceLoop *loop);
     virtual int handle ( )  {    return remote_addr_.get_fd();   }
 
-    void open ( const SocketAddress &remote );
+    void open ( SocketAddress remote );
     void close ( );
     
     void send(const char*buf,const size_t len);

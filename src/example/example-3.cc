@@ -18,7 +18,7 @@ void *server(void *arg)
 int main( int argc, char *argv[] )
 {
     acceptor.start_thread_pool(4);
-    if ( 0 == acceptor.open( &endpoint ) )
+    if ( 0 == acceptor.open( endpoint ) )
     {
        pthread_t thread=create_thread(server,NULL);
        sleep(50);

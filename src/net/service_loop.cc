@@ -168,11 +168,8 @@ void ServiceLoop::wakeup_event()
     }
 }
 
-#include "base/posix_thread.h"
 void ServiceLoop::run()
 {
-    std::cout << "thread: ServiceLoop::run()--" << (int) gettid() << std::endl;
-
     int timeout_ms = 2;
     ready_event_t ready;
     while(!quit_)

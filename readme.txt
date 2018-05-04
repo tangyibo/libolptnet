@@ -13,7 +13,7 @@
  4、基于timerfd/epoll等实现的定时器；
 
 三、依赖
-  只有在编译时用到了boost库function和bind的头文件，不许链接boost库；
+  C++98,不依赖其他库
 
 四、编译
   cd libolptnet/

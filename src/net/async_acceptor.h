@@ -11,7 +11,7 @@ public:
     AsyncAcceptor (ServiceLoop *loop);
     virtual ~AsyncAcceptor ( );
 
-    int open (const SocketAddress *local_addr );
+    int open (const SocketAddress &local_addr );
     void close();
 
     virtual int handle ( ) {   return listen_fd_;   }
@@ -20,7 +20,7 @@ public:
     virtual void do_handle_write ( );
     virtual void do_handle_error ( );
     
-    virtual bool on_accept(const SocketAddress &addr);
+    virtual bool on_accept(SocketAddress addr);
 
 protected:
     int listen_fd_;

@@ -34,7 +34,7 @@ public:
     {
     }
     
-    bool on_accept(const SocketAddress &addr)
+    bool on_accept(SocketAddress &addr)
     {
         ConnectionHandler *ptr = new session_handler();
 
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     ServiceLoop loop;
     acceptor_handler acceptor(&loop);
     
-    if (0 == acceptor.open(&endpoint))
+    if (0 == acceptor.open(endpoint))
     {
         loop.run();
     }

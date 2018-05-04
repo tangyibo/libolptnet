@@ -2,14 +2,16 @@
 #define _NET_REACTOR_H_
 #include <map>
 #include "base/thread_queue.h"
-#include <boost/function.hpp>
+#include "base/functor.h"
+#include "net/tcp_socket_addr.h"
 
-typedef boost::function<void ()>  RunableFunctor;
+typedef owner::function<void,SocketAddress>  RunableFunctor;
 
 class EventHandler;
 class EventDispatcher;
 class SocketAddress;
 class WakeupHandler;
+
 class ServiceLoop
 {
     typedef std::map< int, EventHandler*> handlers_list_t;

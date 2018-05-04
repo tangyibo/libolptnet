@@ -17,16 +17,16 @@ AsyncAcceptor::~AsyncAcceptor()
     close();
 }
 
-int AsyncAcceptor::open(const SocketAddress *local_addr)
+int AsyncAcceptor::open(const SocketAddress &local_addr)
 {
-    const char *ipaddr = local_addr->get_ipaddr().c_str();
-    unsigned short port = local_addr->get_port();
+    const char *ipaddr = local_addr.get_ipaddr().c_str();
+    unsigned short port = local_addr.get_port();
     listen_fd_ = net_tcp_listen(ipaddr, port);
     if (listen_fd_ < 0)
         return -1;
   
-  SocketAddress* tmp=const_cast<SocketAddress *>(local_addr);
-  tmp->set_fd(listen_fd_);
+  SocketAddress& tmp=const_cast<SocketAddress &>(local_addr);
+  tmp.set_fd(listen_fd_);
   
   net_set_reuse_address(listen_fd_);
   
@@ -78,7 +78,7 @@ void AsyncAcceptor::do_handle_error()
     //nothing
 }
 
-bool AsyncAcceptor::on_accept(const SocketAddress &addr)
+bool AsyncAcceptor::on_accept(SocketAddress addr)
 {
 //    ConnectionHandler *ptr = new ConnectionHandler();
 //

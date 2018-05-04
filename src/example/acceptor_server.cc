@@ -1,8 +1,6 @@
 #include "acceptor_server.h"
 #include "service_handler.h"
 #include "net/service_loop.h"
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
 #include <iostream>
 
 acceptor_server::acceptor_server(ServiceLoop* loop) 
@@ -22,7 +20,7 @@ void acceptor_server::stop_thread_pool()
     thpool_.close();
 }
 
-bool acceptor_server::on_accept(const SocketAddress &addr)
+bool acceptor_server::on_accept(SocketAddress addr)
 {
     if (clients_.size() >= MAX_CLIENT_COUNT)
         return false;
@@ -34,7 +32,7 @@ bool acceptor_server::on_accept(const SocketAddress &addr)
     ptr->set_service_loop(loop);
     
     //ptr->open(addr);
-    RunableFunctor f=boost::bind(&service_handler::open,ptr,addr);
+    RunableFunctor f=owner::bind<service_handler,void,SocketAddress>(&service_handler::open,ptr,addr);
     loop->add_run(f);
     
     clients_.push_back(ptr);
