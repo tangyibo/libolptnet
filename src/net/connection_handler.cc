@@ -2,6 +2,7 @@
 #include "net/net_base.h"
 #include "net/service_loop.h"
 #include <assert.h>
+#include <errno.h>
 #include <string.h>
 #include <algorithm>
 #include <stdio.h>
@@ -70,19 +71,45 @@ void ConnectionHandler::do_handle_read()
 void ConnectionHandler::do_handle_write()
 {
     std::string msg = buffer_out_.to_string();
-    if (msg.size() > 0)
+
+    while (msg.size() > 0)
     {
-        ssize_t bytes = ::send(handle(), msg.c_str(), msg.size(),0);
-        assert(bytes > 0);
-
-        buffer_out_.ignore(bytes);
-
-        if (buffer_out_.empty())
+        ssize_t bytes = ::send(handle(), msg.c_str(), msg.size(), 0);
+        if (-1 == bytes)
         {
-            int ret = srv_loop_->modify_event(handle(), true, false, this);
-            assert(0 == ret);
+            if (errno == EINTR)
+            {
+                continue;
+            }
+            else if (errno == EWOULDBLOCK)
+            {
+                break;
+            }
+            else
+            {
+                fprintf(stderr, "fd: %d, send: -1, error:[%d] %s\n", handle(), errno, strerror(errno));
+                return;
+            }
         }
-    }
+        else if (0 == bytes)
+        {
+            // Will happen?
+            break;
+        }
+        else
+        {
+            buffer_out_.ignore(bytes);
+
+            if (buffer_out_.empty())
+            {
+                int ret = srv_loop_->modify_event(handle(), true, false, this);
+                assert(0 == ret);
+            }
+            
+            msg = buffer_out_.to_string();
+        }
+        
+    }//while
 }
 
 void ConnectionHandler::do_handle_error()

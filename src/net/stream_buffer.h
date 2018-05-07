@@ -29,9 +29,10 @@ public:
     void ignore ( const int bytes )
     {
         std::string tmp = stream_.str ( );
-        assert(bytes>=0 && bytes<=(int)tmp.size ());
-
-        stream_.str ( tmp.substr ( bytes ) );       
+        if ( bytes >= 0 && bytes <= ( int ) tmp.size ( ) )
+        {
+            stream_.str ( tmp.substr ( bytes ) );
+        }
     }
 
     const size_t length ( )

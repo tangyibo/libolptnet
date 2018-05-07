@@ -16,7 +16,7 @@ public:
     void start_thread_pool(const int thread_num=0);
     void stop_thread_pool();
     
-    virtual bool on_accept(const SocketAddress addr);
+    virtual bool on_accept(const SocketAddress &addr);
     
     void remove_handler(const service_handler *handler);
     

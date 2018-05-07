@@ -34,7 +34,7 @@ public:
     {
     }
     
-    bool on_accept(SocketAddress &addr)
+    bool on_accept(const SocketAddress &addr)
     {
         ConnectionHandler *ptr = new session_handler();
 
