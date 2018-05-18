@@ -3,7 +3,7 @@
 =========================
 
 ### 一、简介
-   实现了一套基于epoll/poll/select模型I/O复用的多线程网络编程框架，多线程部分参考
+    基于epoll/poll/select模型I/O复用的多线程网络编程框架，多线程部分参考
 了chenshuo的muduo库one loop per thread 的设计思想。
 
 ### 二、功能
@@ -19,9 +19,9 @@
 #### 4、使用传统封装、继承与多态的特性实现，继承关系不超过2级；
 
 ### 四、编译
-  cd libolptnet/
-  make all
-  即可在bin/目录先生成libolptnet.a静态库，其中在src/example中有example-1至example-4个
+  #####cd libolptnet/
+  #####make all
+  #####即可在bin/目录先生成libolptnet.a静态库，其中在src/example中有example-1至example-4个
 使用示例。可运行测试。 
 
 ### 五、联系
