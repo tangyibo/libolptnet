@@ -19,10 +19,10 @@
 #### 4、使用传统封装、继承与多态的特性实现，继承关系不超过2级；
 
 ### 四、编译
-  #####cd libolptnet/
-  #####make all
-  #####即可在bin/目录先生成libolptnet.a静态库，其中在src/example中有example-1至example-4个
+  ##### cd libolptnet/
+  ##### make all
+  ##### 即可在bin/目录先生成libolptnet.a静态库，其中在src/example中有example-1至example-4个
 使用示例。可运行测试。 
 
 ### 五、联系
-  E-mail:inrgihc@126.com
+  ##### E-mail : inrgihc@126.com
