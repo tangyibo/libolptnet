@@ -1,6 +1,17 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef EVENT_DISPATCHER_MODEL_H
 #define EVENT_DISPATCHER_MODEL_H
 #include <vector>
+
+namespace olptnet{
 
 class EventHandler;
 typedef std::vector< std::pair<int,int> > ready_event_t;
@@ -33,6 +44,8 @@ private:
     EventDispatcher ( const EventDispatcher& other );
     EventDispatcher& operator=(const EventDispatcher& other);
 };
+
+} //end namespace olptnet
 
 #endif /* EVENT_MODEL_H */
 

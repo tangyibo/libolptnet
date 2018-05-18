@@ -1,9 +1,20 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/async_acceptor.h"
 #include "net/connection_handler.h"
 #include "net/service_loop.h"
 #include "net/net_base.h"
 #include <assert.h>
 #include <errno.h>
+
+namespace olptnet{
 
 AsyncAcceptor::AsyncAcceptor(ServiceLoop *loop)
 :EventHandler()
@@ -87,3 +98,5 @@ bool AsyncAcceptor::on_accept(const SocketAddress &addr)
 //    
     return true;
 }
+
+} //end namespace olptnet

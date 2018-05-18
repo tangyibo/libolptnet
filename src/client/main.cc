@@ -1,8 +1,19 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include <iostream>
 #include <string.h>
 #include <unistd.h>
 #include <sys/socket.h>
 #include "net/net_base.h"
+
+using namespace olptnet;
 
 class tcp_connector
 {

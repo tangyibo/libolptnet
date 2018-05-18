@@ -1,8 +1,19 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef TCP_CONNECTION_H
 #define TCP_CONNECTION_H
 #include "net/tcp_socket_addr.h"
 #include "net/event_handler.h"
 #include "net/stream_buffer.h"
+
+namespace olptnet{
 
 class ServiceLoop;
 class ConnectionHandler : public EventHandler
@@ -38,6 +49,8 @@ private:
     input_stream_buffer buffer_in_;
     output_stream_buffer buffer_out_;
 };
+
+} //end namespace olptnet
 
 #endif /* TCP_CONNECTION_H */
 

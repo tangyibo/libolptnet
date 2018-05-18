@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/net_base.h"
 #include <sys/types.h>   
 #include <sys/socket.h>  //connect,send,recv,setsockopt
@@ -14,6 +23,8 @@
 #include <assert.h>
 
 #define LISTEN_QUEUE_SIZE 1024
+
+namespace olptnet{
 
 int net_tcp_bind(const char *ip, unsigned short port)
 {
@@ -238,3 +249,4 @@ int net_clear_reuse_address(int fd)
     return setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof (flag));
 }
 
+} //end namespace olptnet

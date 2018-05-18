@@ -1,6 +1,17 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef _ACCEPTOR_HANCLER_H_
 #define _ACCEPTOR_HANCLER_H_
 #include "net/event_handler.h"
+
+namespace olptnet{
 
 class ServiceLoop;
 class SocketAddress;
@@ -26,6 +37,8 @@ protected:
     int listen_fd_;
     ServiceLoop *srv_loop_;
 };
+
+} //end namespace olptnet
 
 #endif /* TCP_LISTENER_H */
 

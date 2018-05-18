@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/event_dispatcher.h"
 #include "net/event_handler.h"
 #include <sys/select.h>
@@ -6,6 +15,7 @@
 #include <time.h>
 #include <errno.h>
 
+namespace olptnet{
 /*
  * I/O复用之SELECT模型调度分发
  */
@@ -153,3 +163,5 @@ int DispatcherSelect::handle_events(ready_event_t& ready, const int timeout_ms)
 
     return ret;
 }
+
+} //end namespace olptnet

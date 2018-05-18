@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef SERVICE_ACCETOR_H
 #define SERVICE_ACCETOR_H
 #include "net/tcp_socket_addr.h"
@@ -6,6 +15,8 @@
 #include <vector>
 
 #define MAX_CLIENT_COUNT    1024
+
+using namespace olptnet;
 
 class service_handler;
 class acceptor_server : public AsyncAcceptor

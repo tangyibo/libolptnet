@@ -1,6 +1,16 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef _EVENT_HANDLER_H_
 #define _EVENT_HANDLER_H_
 
+namespace olptnet{
 /*
  *事件处理器
  */
@@ -23,6 +33,7 @@ private:
     EventHandler& operator=(const EventHandler& other);
 };
 
+} //end namespace olptnet
 
 #endif /* EVENT_HANDLER_H */
 

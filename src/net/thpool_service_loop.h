@@ -1,6 +1,17 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef THPOOL_SERVICE_LOOP_H
 #define THPOOL_SERVICE_LOOP_H
 #include <vector>
+
+namespace olptnet{
 
 class ServiceLoopThread;
 class ServiceLoop;
@@ -33,6 +44,8 @@ private:
     std::vector<ServiceLoopThread*> loop_threads_;
     std::vector<ServiceLoop *> ev_loops_;
 };
+
+} //end namespace olptnet
 
 #endif /* THPOOL_SERVICE_LOOP_H */
 

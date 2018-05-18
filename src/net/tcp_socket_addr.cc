@@ -1,8 +1,19 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "tcp_socket_addr.h"
 #include <netdb.h>
 #include <arpa/inet.h> 
 #include <string.h>
 #include <stdio.h>
+
+namespace olptnet{
 
 SocketAddress::SocketAddress()
 :socket_fd_(-1)
@@ -92,3 +103,5 @@ std::string SocketAddress::to_string() const
     sprintf(buf,"%s:%d",get_ipaddr().c_str(),get_port());
     return std::string(buf);
 }
+
+} //end namespace olptnet

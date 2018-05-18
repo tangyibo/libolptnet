@@ -1,7 +1,18 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/timer_handler.h"
 #include "net/service_loop.h"
 #include <iostream>
 #include <time.h>
+
+using namespace olptnet;
 
 class my_timer : public TimerHandler
 {

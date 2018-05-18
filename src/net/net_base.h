@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef SOCKET_NET_H
 #define SOCKET_NET_H
 #include <stdint.h>
@@ -9,6 +18,7 @@
 #include <netinet/tcp.h> //TCP_NODELAY
 #include <netdb.h>         //gethostbyname
 
+namespace olptnet{
 
 //bind & listen
 int net_tcp_bind ( const char *ip, unsigned short port );
@@ -33,7 +43,7 @@ int net_set_reuse_address ( int fd );
 int net_clear_reuse_address ( int fd );
 
 //host bytes & network bytes convert
-
+} //end namespace olptnet
 
 #endif /* SOCKET_NET_H */
 

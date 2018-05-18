@@ -1,8 +1,19 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "thpool_service_loop.h"
 #include "net/service_loop.h"
 #include "net/service_loop_thread.h"
 #include <iostream>
 #include <time.h>
+
+namespace olptnet{
 
 ThpoolServiceLoop::ThpoolServiceLoop(ServiceLoop *baseloop)
 :thread_num_(0)
@@ -49,3 +60,5 @@ void ThpoolServiceLoop::close()
           
      return ev_loops_[index++%loop_count];
  }
+ 
+} //end namespace olptnet

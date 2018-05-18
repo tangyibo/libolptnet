@@ -1,5 +1,16 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/service_loop_thread.h"
 #include "net/service_loop.h"
+
+namespace olptnet{
 
 ServiceLoopThread::ServiceLoopThread()
 :loop_(NULL)
@@ -37,3 +48,5 @@ ServiceLoopThread::~ServiceLoopThread()
       
       loop.run();
  }
+ 
+} //end namespace olptnet

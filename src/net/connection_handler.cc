@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/connection_handler.h"
 #include "net/net_base.h"
 #include "net/service_loop.h"
@@ -6,6 +15,8 @@
 #include <string.h>
 #include <algorithm>
 #include <stdio.h>
+
+namespace olptnet{
 
 ConnectionHandler::ConnectionHandler()
 : EventHandler()
@@ -140,3 +151,5 @@ void ConnectionHandler::send(const std::string data)
         assert(0 == ret);
     }
 }
+
+} //end namespace olptnet

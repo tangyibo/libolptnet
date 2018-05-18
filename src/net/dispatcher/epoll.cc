@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/event_dispatcher.h"
 #include <sys/epoll.h> //epoll_create,epoll_ctrl,epoll_wait
 #include <assert.h> //assert
@@ -5,6 +14,7 @@
 #include <unistd.h>
 #include <vector> //std::vector
 
+namespace olptnet{
 /*
  * I/O复用之EPOLL模型调度分发
  */
@@ -155,3 +165,5 @@ int DispatcherEpoll::handle_events(ready_event_t& ready, const int timeout_ms)
 
     return nfds;
 }
+
+} //end namespace olptnet

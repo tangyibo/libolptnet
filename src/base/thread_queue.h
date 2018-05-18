@@ -1,7 +1,18 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef __THREAD_QUEUE_HEADER_H__
 #define __THREAD_QUEUE_HEADER_H__
 #include <deque> 
 #include "base/mutex_lock.h"
+
+namespace olptnet{
 
 template <typename T>
 class ThreadQueue
@@ -47,5 +58,7 @@ private:
     std::deque<T> tasks_list_;
     MutexLock tasks_mutex_;
 };  
+
+}//end namespace olptnet
 
 #endif

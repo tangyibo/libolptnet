@@ -1,7 +1,18 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef TIMER_HANDLER_H
 #define TIMER_HANDLER_H
 #include "net/event_handler.h"
 #include <stdint.h>
+
+namespace olptnet{
 
 class ServiceLoop;
 class TimerHandler: public EventHandler
@@ -34,6 +45,8 @@ private:
     volatile bool repeat_;
     volatile bool started_;
 };
+
+} //end namespace olptnet
 
 #endif /* TIMER_HANDLER_H */
 

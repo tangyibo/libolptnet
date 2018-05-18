@@ -1,7 +1,18 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "stream_buffer.h"
 #include <sys/types.h>   
 #include <sys/socket.h>
 #include <errno.h>
+
+namespace olptnet{
 
 stream_buffer::stream_buffer( )
 {
@@ -96,3 +107,5 @@ void output_stream_buffer::put(const char *ptr,size_t len)
 {
     stream_.write(msg.c_str(),msg.size());
 }
+ 
+} //end namespace olptnet

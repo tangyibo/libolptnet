@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/timer_handler.h"
 #include "net/service_loop.h"
 #include <sys/timerfd.h>  //timerfd_create ,timerfd_settime
@@ -6,6 +15,8 @@
 #include <unistd.h>  //close
 #include <errno.h>  //errno
 #include <iostream>
+
+namespace olptnet{
 
 TimerHandler::TimerHandler(ServiceLoop *loop, const double interval, const bool repeat)
 : timer_fd_(::timerfd_create(CLOCK_MONOTONIC, TFD_NONBLOCK | TFD_CLOEXEC))
@@ -82,3 +93,5 @@ void TimerHandler::do_handle_read()
         stop();
     }
 }
+
+} //end namespace olptnet

@@ -1,6 +1,15 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef _FUNCTOR__H_
 #define _FUNCTOR__H_
-
+namespace olptnet{
 namespace owner {
 
     template<class ret_type, class arg_type>
@@ -144,5 +153,5 @@ namespace owner {
     }
 
 } // end namespace misc
-
+}//end namespace olptnet
 #endif

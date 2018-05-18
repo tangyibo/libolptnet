@@ -1,8 +1,19 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef STREAM_BUFFER_H
 #define STREAM_BUFFER_H
 #include <sstream>
 #include <ios>
 #include <assert.h>
+
+namespace olptnet{
 
 class stream_buffer
 {
@@ -74,6 +85,8 @@ public:
     void put ( const char *ptr, size_t len );
     void put ( const std::string &msg );
 };
+
+} //end namespace olptnet
 
 #endif /* STREAM_BUFFER_H */
 

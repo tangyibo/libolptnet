@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef MEMBER_THREAD_H
 #define MEMBER_THREAD_H
 #include <pthread.h>
@@ -7,6 +16,8 @@
 #include <sys/syscall.h>
 
 #define gettid()  static_cast<pid_t>(::syscall(SYS_gettid))
+
+namespace olptnet{
 
 template<class T>
 class ThreadHelper
@@ -71,6 +82,8 @@ inline void join_thread(const pthread_t pid)
 {
     pthread_join(pid,NULL);
 }
+
+}//end namespace olptnet
 
 #endif /* MEMBER_THREAD_H */
 

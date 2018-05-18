@@ -1,7 +1,18 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef NET_BYTES_ENDIAN_H
 #define NET_BYTES_ENDIAN_H
 #include <stdint.h>
 #include <endian.h>
+
+namespace olptnet{
 
 inline bool is_little_endian ( )
 {
@@ -39,6 +50,8 @@ inline uint16_t network_to_host16 ( uint16_t net16 )
 {
     return be16toh ( net16 );
 }
+
+} //end namespace olptnet
 
 #endif /* BYTES_ENDIAN_H */
 

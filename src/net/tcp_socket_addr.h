@@ -1,8 +1,19 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef TCP_SOCKET_ADDR_H
 #define TCP_SOCKET_ADDR_H
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <string>
+
+namespace olptnet{
 
 class SocketAddress
 {
@@ -33,6 +44,8 @@ private:
     int socket_fd_;
     struct sockaddr_in addr_;
 };
+
+} //end namespace olptnet
 
 #endif /* TCP_SOCKET_H */
 

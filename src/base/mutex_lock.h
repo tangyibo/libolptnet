@@ -1,3 +1,12 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #ifndef MUTEX_LOCK_H
 #define MUTEX_LOCK_H
 #include <iostream>
@@ -6,7 +15,6 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <assert.h>
-
 
 #if 1
 #define CHECK(exp)                                                                                                      \
@@ -23,6 +31,8 @@
 #define CHECK(exp) 
 #endif
 
+namespace olptnet{
+    
 class MutexLock
 {
 public:
@@ -120,6 +130,8 @@ private:
     pthread_cond_t cond_;
     MutexLock &mutex_;
 };
+
+} //end namespace olptnet
 
 #endif /* MUTEX_LOCK_H */
 

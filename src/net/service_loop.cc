@@ -1,9 +1,20 @@
+// Copyright tang.  All rights reserved.
+// https://github.com/tangyibo/libolptnet
+//
+// Use of this source code is governed by a BSD-style license
+//
+// Author: tang (inrgihc@126.com)
+// Data : 2018/5/2
+// Location: beijing , china
+/////////////////////////////////////////////////////////////
 #include "net/service_loop.h"
 #include "net/event_handler.h"
 #include "net/event_dispatcher.h"
 #include <sys/eventfd.h>
 #include <assert.h>
 #include <stdint.h>
+
+namespace olptnet{
 
 class WakeupHandler : public EventHandler
 {
@@ -74,14 +85,14 @@ private:
 };
 
 ////////////////////////////////////////////////////////
-ServiceLoop::ServiceLoop()
+ServiceLoop::ServiceLoop(const int poll)
 :quit_(false)
 ,dispatcher_(NULL)
 ,handlers_()
 ,functors_()
 ,wakeup_(new WakeupHandler(this))
 {
-    dispatcher_ = EventDispatcher::create_dispatcher(2);
+    dispatcher_ = EventDispatcher::create_dispatcher(poll);
 
     assert(NULL != dispatcher_);
     assert(NULL!=wakeup_);
@@ -219,3 +230,5 @@ void ServiceLoop::quit()
     
     wakeup_event();
 }
+
+} //end namespace olptnet
