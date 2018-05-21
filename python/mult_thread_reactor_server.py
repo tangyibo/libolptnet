@@ -267,7 +267,8 @@ class TCPConnection(EventHandler):
         self.__loop.modify(self.__handle,self, EVENT.WRITE)
 
     def on_read(self,data):
-        pass
+        logger.info("[%d] recv msg :%s" % (threading.currentThread().ident, data))
+        self.send(data)
 
     def on_close(self):
         pass
@@ -326,12 +327,13 @@ class MyConnection(TCPConnection):
 
 class MyAcceptor(TCPAcceptor):
 
-    def __init__(self, loop, host, port):
+    def __init__(self, loop, host, port,HandleClass):
         TCPAcceptor.__init__(self, loop, host, port)
+        self.HandleClass=HandleClass
 
     def on_accept(self, client, address):
         loop = self._thpool.get_loop()
-        conn = MyConnection(loop, client, address)
+        conn = self.HandleClass(loop, client, address)
         cb = Callback(conn, conn.open.__name__)
         loop.add_functor(cb)
 
@@ -344,6 +346,6 @@ if __name__ == "__main__":
     logger = logging.getLogger("example")
 
     loop=ServiceLoop()
-    server = MyAcceptor(loop,'0.0.0.0',50007)
+    server = MyAcceptor(loop,'0.0.0.0',50007,MyConnection)
     server.open(thread_num=10)
     loop.run()
