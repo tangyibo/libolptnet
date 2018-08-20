@@ -23,9 +23,6 @@ class Callback:
         self.__instance = instance
         self.__function_name = function_name
 
-    def __del__(self):
-        pass
-
     def action(self):
         self.__instance.__getattribute__(self.__function_name)()
 
@@ -125,9 +122,6 @@ class ServiceLoopThread(threading.Thread):
         self.__cond = threading.Condition()
         self.__lock = threading.Lock()
 
-    def __del__(self):
-        pass
-
     def get_loop(self):
         ret=None
 
@@ -166,9 +160,6 @@ class ThpoolServiceLoop:
     def __init__(self,loop):
         self.__base_loop=loop
         self.__index=0
-
-    def __del__(self):
-        pass
 
     def start(self,thread_num):
         if thread_num <=0:
@@ -213,9 +204,6 @@ class TCPConnection(EventHandler):
 
         self.__recv_buffer=SocketBuffer()
         self.__send_buffer=SocketBuffer()
-
-    def __del__(self):
-        pass
 
     def open(self):
         self.__loop.register(self.__handle,self, EVENT.READ)
@@ -275,9 +263,6 @@ class TCPAcceptor(EventHandler):
         self.__port = port
         self._thpool=ThpoolServiceLoop(loop)
         self._server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    def __del__(self):
-        pass
 
     def open(self,thread_num):
         try:
