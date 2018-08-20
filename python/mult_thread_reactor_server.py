@@ -194,22 +194,15 @@ class ThpoolServiceLoop:
 class SocketBuffer:
 
     def __init__(self):
-        self.__buffer=Queue.Queue()
+        self.__buffer=BytesIO()
 
     def push(self,data):
-        return self.__buffer.put(data)
+        return self.__buffer.write(data)
 
     def take(self):
-        ret=""
-        while True:
-            try:
-                data = self.__buffer.get_nowait()
-                ret+=str(data)
-            except Queue.Empty:
-                break
-
-        return ret
-
+        data= self.__buffer.getvalue()
+	self.__buffer.seek(0,0)
+	return data;
 
 class TCPConnection(EventHandler):
 
@@ -239,7 +232,7 @@ class TCPConnection(EventHandler):
         msg = self.__handle.recv(1024)
         if not msg or len(msg) <= 0:
             logger.info("[%d] recv msg is 0,close client" % (threading.currentThread().ident))
-            self.close()
+            self.do_close()
             return
 
         self.__recv_buffer.push(msg)
